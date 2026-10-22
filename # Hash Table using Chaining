@@ -1,0 +1,61 @@
+# Hash Table using Chaining
+table = [[] for i in range(10)]
+def insert(key, value):
+    index = key % 10
+    table[index].append((key, value))
+def search(key):
+    index = key % 10
+    for k, v in table[index]:
+        if k == key:
+            print("Value =", v)
+            return
+    print("Key not found")
+def delete(key):
+    index = key % 10
+    for item in table[index]:
+        if item[0] == key:
+            table[index].remove(item)
+            print("Key deleted")
+            return
+    print("Key not found")
+# Insert
+n = int(input("Enter number of elements: "))
+for i in range(n):
+    key = int(input("Enter key: "))
+    value = input("Enter value: ")
+    insert(key, value)
+# Search
+key = int(input("\nEnter key to search: "))
+search(key)
+# Delete
+key = int(input("Enter key to delete: "))
+delete(key)
+# Display
+print("\nHash Table:")
+for i in range(10):
+    print(i, ":", table[i])
+Output
+Enter number of elements: 4
+Enter key: 15
+Enter value: Apple
+Enter key: 25
+Enter value: Banana
+Enter key: 7
+Enter value: Cherry
+Enter key: 12
+Enter value: Date
+Enter key to search: 25
+Value = Banana
+Enter key to delete: 15
+Key deleted
+Hash Table:
+0 : []
+1 : []
+2 : [(12, 'Date')]
+3 : []
+4 : []
+5 : [(25, 'Banana')]
+6 : []
+7 : [(7, 'Cherry')]
+8 : []
+9 : []
